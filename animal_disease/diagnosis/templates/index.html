@@ -1,0 +1,78 @@
+<!-- diagnosis/templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Disease Prediction</title>
+</head>
+<body>
+    <h1>Animal Disease Prediction</h1>
+    
+
+    <!-- diagnosis/templates/index.html -->
+    <form id="prediction-form" method="post" action="{% url 'predict' %}">
+        {% csrf_token %}
+        <label for="animal">Animal:</label>
+        <select id="animal" name="animal">
+            {% for animal in animals %}
+                <option value="{{ animal }}">{{ animal }}</option>
+            {% endfor %}
+        </select>
+    
+        <label for="symptom1">Symptom 1:</label>
+        <select id="symptom1" name="symptom1">
+            {% for symptom in symptoms1 %}
+                <option value="{{ symptom }}">{{ symptom }}</option>
+            {% endfor %}
+        </select>
+    
+        <label for="symptom2">Symptom 2:</label>
+        <select id="symptom2" name="symptom2">
+            {% for symptom in symptoms2 %}
+                <option value="{{ symptom }}">{{ symptom }}</option>
+            {% endfor %}
+        </select>
+    
+        <label for="symptom3">Symptom 3:</label>
+        <select id="symptom3" name="symptom3">
+            {% for symptom in symptoms3 %}
+                <option value="{{ symptom }}">{{ symptom }}</option>
+            {% endfor %}
+        </select>
+    
+        <label for="symptom4">Symptom 4:</label>
+        <select id="symptom4" name="symptom4">
+            {% for symptom in symptoms4 %}
+                <option value="{{ symptom }}">{{ symptom }}</option>
+            {% endfor %}
+        </select>
+    
+        <label for="symptom5">Symptom 5:</label>
+        <select id="symptom5" name="symptom5">
+            {% for symptom in symptoms5 %}
+                <option value="{{ symptom }}">{{ symptom }}</option>
+            {% endfor %}
+        </select>
+    
+        <input type="submit" value="predict">
+    </form>
+
+    
+    <div id="result"></div>
+
+    <!-- <script>
+        document.getElementById('prediction-form').onsubmit = async function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const response = await fetch('/predict/', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            document.getElementById('result').innerText = 'Predicted Disease: ' + result.predicted_disease;
+        };
+    </script> -->
+</body>
+</html>
